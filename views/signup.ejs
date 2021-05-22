@@ -1,0 +1,156 @@
+<%- include("partials/header") %> 
+<style>
+     .form {
+          position: absolute;
+          width: 600px;
+          /* border: 3px solid black; */
+          border-radius: 20px;
+          padding: 10px;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+     }
+
+     .sign-up {
+          margin-left: 10px;
+          margin-right: 5px;
+          width: 33px;
+     }
+
+     .logo {
+          width: 70px;
+     }
+     h1 {
+          text-align: center;
+     }
+
+     .form-group {
+          margin: 10px;
+     }
+
+     @media (max-width: 700px) {
+          .form {
+               width: 100%;
+          }
+          .navbar {
+               width: 100%;
+          }
+     }
+
+</style>
+
+<% if (pasConfErr) { %>
+     <div class="alert alert-danger" role="alert">
+          The passwords don't match.
+     </div>
+<% } %>
+
+<div class="form">
+     <h1>Sign Up</h1>
+     <form action="/sign-up" method="post">
+          <div class="form-group">
+               <label for="fname">First
+                    Name</label>
+               <input type="text"
+                    class="form-control"
+                    id="fname"
+                    name="fname"
+                    placeholder="First Name"
+                    required
+                    autocomplete="off">
+          </div>
+          <div class="form-group">
+               <label for="lname">Last
+                    Name</label>
+               <input type="text"
+                    class="form-control"
+                    id="lname"
+                    name="lname"
+                    placeholder="Last Name" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label for="dob">Date of
+                    Birth</label>
+               <input type="date"
+                    name="dob" id="dob"
+                    class="form-control"
+                    placeholder="DD/MM/YYYY" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label
+                    for="user-id">Gender</label>
+               <input type="text"
+                    class="form-control"
+                    id="gender"
+                    name="gender"
+                    placeholder="Male/Female/Others"
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label for="email">Email</label>
+               <input type="email"
+                    class="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="email" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label for="lname">Location</label>
+               <input type="text"
+                    class="form-control"
+                    id="location"
+                    name="location"
+                    placeholder="Location" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label
+                    for="user-id">Username</label>
+               <input type="text"
+                    class="form-control"
+                    id="user-id"
+                    name="usrname"
+                    placeholder="Username" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label
+                    for="password">Password</label>
+               <input type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Password"
+                    name="password" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <label for="confirm">Confirm
+                    Password</label>
+               <input type="password"
+                    id="confirm"
+                    class="form-control"
+                    placeholder="Confirm Password"
+                    name="confirm"
+                    name="confirm" 
+                    required
+                    autocomplete="off"/>
+          </div>
+          <div class="form-group">
+               <button type="submit"
+                    class="btn btn-primary" name="btnn">Create
+                    account</button>
+          </div>
+     </form>
+</div>
+<%- include("partials/footer") %>

@@ -1,0 +1,49 @@
+<%- include("partials/dashHeader") %> 
+<style>
+     .form {
+          position: absolute;
+          width: 600px;
+          border: 3px solid black;
+          border-radius: 20px;
+          padding: 10px;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+     }
+
+     .sign-up {
+          margin-left: 10px;
+          margin-right: 5px;
+          width: 33px;
+     }
+
+     .logo {
+          width: 70px;
+     }
+     h1 {
+          text-align: center;
+     }
+
+     .form-group {
+          margin: 10px;
+     }
+
+     @media (max-width: 700px) {
+          .form {
+               width: 100%;
+          }
+          .navbar {
+               width: 100%;
+          }
+     }
+
+</style>
+
+<div class="form">
+     <h1>How are you feeling today?</h1>
+     <form action="/dashboard/examine" method="post">
+          <div class="form-group">
+          </div>
+     </form>
+</div>
+<%- include("partials/footer") %>

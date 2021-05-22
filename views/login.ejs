@@ -1,0 +1,85 @@
+<%- include("partials/header") %> 
+<style>
+     body {
+          position: relative;
+          height: 100%;
+          width: 100%;
+     }
+
+     .inf {
+          text-align: center;
+     }
+
+     .login {
+          position: absolute;
+          width: 600px;
+          /* border: 3px solid black; */
+          border-radius: 20px;
+          padding: 10px;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, 50%);
+     }
+     .logo {
+          width: 70px;
+     }
+
+     .form-group {
+          margin: 10px;
+     }
+
+     @media (max-width: 700px) {
+          .navbar {
+               width: 100%;
+          }
+          .login {
+               width: 100%;
+          }
+     }
+
+</style>
+
+<% if (passChange) { %>
+     <div class="alert alert-success" role="alert">
+          Password Changed Successfully.
+     </div>
+<% } else if (incorrect) { %>
+     <div class="alert alert-danger" role="alert">
+          Password or the Username is incorrect.
+     </div>
+<% } else if (accCreated) { %>
+     <div class="alert alert-success" role="alert">
+          Account Successfully Created!
+     </div>
+ <% } %> 
+
+<div class="login">
+     <h1 class="inf">Login Here </h1>
+     <form action="/" method="POST">
+          <div class="form-group">
+               <label
+                    for="user-id">Username</label>
+               <input type="text"
+                    class="form-control"
+                    id="user-id"
+                    placeholder="Username"
+                    name="usrname"
+                    autocomplete="off">
+          </div>
+          <div class="form-group">
+               <label
+                    for="password">Password</label>
+               <input type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder="Password"
+                    name="password">
+          </div>
+          <div class="form-group">
+               <button type="submit" class="btn btn-primary" name="btn">Login</button>
+          </div>
+          <a href="/sign-up" class="nav-link">Click here to Sign up!</a>
+          <a href="/forgot-password" class="nav-link">Forgot Password</a>
+     </form>
+</div>
+<%- include("partials/footer") %>

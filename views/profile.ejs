@@ -1,0 +1,58 @@
+<%- include("partials/dashHeader") %> 
+<style>
+     table{
+          border: 3px solid;
+          padding: 10px;
+          margin: 10px;
+          border-radius: 15px;
+     }
+</style>
+<table class="table table-striped">
+     <tbody>
+          <tr>
+               <th scope="row"><h4>User ID</h4></th>
+               <td><h5>
+                    <%= user.firstName + ' ' + user.lastName %> 
+               </h5></td>
+          </tr>
+          <tr>
+               <th scope="row"><h4>Date of Birth</h4></th>
+               <% let birth = new Date(user.dob) %>
+               <td><h5> <%= birth %>  </h5></td> 
+          </tr>
+          <tr>
+               <th scope="row"><h4>Today</h4></th>
+               <% let curr = new Date(today) %>
+               <td><h5> <%= curr %>  </h5></td> 
+          </tr>
+          <tr>
+               <th scope="row"><h4>Age</h4></th>
+               <td><h5> <%= Math.floor((curr - birth)/(100*3600*10*24*365)) %> </h5></td> 
+          </tr>
+          <tr>
+               <th scope="row"><h4>Gender</h4></th>
+               <td><h5> <%= user.gender %> </h5></td> 
+          </tr>
+          <tr>
+               <th scope="row"><h4>Email</h4></th>
+               <td><h5><%= user.email %></h5></td>
+          </tr>
+          <tr>
+               <th scope="row"><h4>Location</h4></th>
+               <td><h5> <%= user.location %> </h5></td>
+          </tr>
+          <tr>
+               <th scope="row"><h4>Health Status</h4></th>
+               <td><h5>
+                    <% if(user.covidStatus){ %>
+                         <span style="color: red">Please stay at home and Quarantine Yourself</span> 
+                         <% } else if(user.suspecious){ %>
+                              <span style="color: orange">Please take up a test.</span> 
+                              <% } else if(!user.suspecious){ %> 
+                                   <span style="color:green">You are Safe but be careful!</span>
+                              <% } %> 
+               </h5></td>
+          </tr>
+     </tbody>
+</table>
+<%- include("partials/footer") %>  

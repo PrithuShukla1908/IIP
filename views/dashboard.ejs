@@ -1,0 +1,60 @@
+<%- include("partials/dashHeader"); %> 
+<% if (loginSuccess) { %>
+     <div class="alert alert-success" role="alert">
+          Successfully Logged In.
+        </div>
+<% } else if (accCreated) { %>
+     <div class="alert alert-success" role="alert">
+          Account Successfully Created!
+     </div>
+ <% } %> 
+ <h1>
+   Username: <span style="color: coral;"><%= username %></span> <br> Name: <span style="color: coral;"><%= name %> </span>
+ </h1>
+ <div class="row">
+     <div class="col-sm-6">
+       <div class="card">
+         <div class="card-body">
+           <h5 class="card-title">Examine</h5>
+           <p class="card-text">This will lead you to a questionnaire on how you are feeling.</p>
+           <a href="/dashboard/examine" class="btn btn-primary">
+                Go to the Examination
+           </a>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6">
+       <div class="card">
+         <div class="card-body">
+           <h5 class="card-title">Team</h5>
+           <p class="card-text">This will lead to a view at the Team who developed it.</p>
+           <a href="/dashboard/developer" class="btn btn-primary">
+                Team Info
+           </a>
+         </div>
+       </div>
+     </div>
+   </div>
+   <br>
+   <div class="row">
+     <div class="col-sm-6">
+       <div class="card">
+         <div class="card-body">
+           <h5 class="card-title">Profile</h5>
+           <p class="card-text">This will lead you to a page where you can view and modify our details.</p>
+           <a href="/dashboard/profile" class="btn btn-primary">
+          Profile</a>
+         </div>
+       </div>
+     </div>
+     <div class="col-sm-6">
+       <div class="card">
+         <div class="card-body">
+           <h5 class="card-title">Check Locale</h5>
+           <p class="card-text">This is will lead to a topological map where you can see if a location is safe to visit or not.</p>
+           <a href="/" class="btn btn-primary">Go to Map</a>
+         </div>
+       </div>
+     </div>
+   </div>
+<%- include("partials/footer"); %> 
