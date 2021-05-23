@@ -35,20 +35,26 @@ const userSchema = mongoose.Schema({
      covidStatus: Boolean,
      suspicious: Boolean,
      userName: String,
-     Password: String
+     Password: String,
+     vaccineName: String,
+     noDoses: Number,
+     vaccine1: Date,
+     vaccine2: Date,
+     taken: Boolean,
+     past: String
 });
 
-app.use(session({
-     secret: "session10292729", 
-     resave: false,
-     saveUninitialized: false,
-     cookie: {
-          maxAge: 60000000
-     }
-}));
+// app.use(session({
+//      secret: "session10292729", 
+//      resave: false,
+//      saveUninitialized: false,
+//      cookie: {
+//           maxAge: 60000000
+//      }
+// }));
 
 const User = mongoose.model("user", userSchema);
-
+//localhost:3000
 //========= rendering login =========
 app.get('/', function (req, res){
      res.render('login',{
@@ -61,6 +67,7 @@ app.post('/', function(req, res){
      const us = req.body.usrname;
      const pass = req.body.password;
      var temp = User.findOne({userName: us, Password: pass}, function(err, u){
+          if(err) res.send(err);
           if(u === null){
                incorrect = true;
                res.redirect('/');
@@ -136,21 +143,45 @@ app.get("/about", function(req, res){
 
 //========= Examination =========
 app.get('/dashboard/examine', function(req, res){
-     console.log(USER);
      res.render("examine", {
           user: USER
      });
 });
 
 app.post('/dashboard/examine', function (req, res){
-
+     console.log(req.body.vaccine);
+     console.log(req.body.vaccineName);
+     if(req.body.vaccine == 'no'){
+          User.findOneAndUpdate({userName: USER.userName}, {set$: {taken: false}}, function(err,u){
+               if(err) res.send(err);
+               else{
+                    console.log(user);
+                    res.redirect('/dashboard');
+               }
+          });
+     }
+     else{
+          User.findOneAndUpdate({userName: USER.userName}, {$set: {taken: true, 
+               vaccineName: req.body.vaccineName, 
+               noDoses: Number(req.body.noDoses),
+               vaccine1: req.body.dose1,
+               vaccine2: req.body.dose2,
+          }}, function(err, user){
+               if(err) res.send(err);
+               else{
+                    console.log(user);
+                    res.redirect('/dashboard');
+               }
+          });
+     }
+     console.log(USER);
 });
 
 
 //========= Team in Dash =========
 app.get('/dashboard/developer', function(req, res){
      res.render('dashTeam');
-})
+});
 ;
 //========= forget password =========
 app.get('/forgot-password', function(req, res){
@@ -181,6 +212,8 @@ app.get('/dashboard/check-locale', function(req, res){
      res.render('checklocale', {
           user: USER
      });
-})
+});
+
+console.log(USER);
 
 app.listen(3000, () => console.log('Server is running on port 3000'));

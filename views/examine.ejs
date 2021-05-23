@@ -3,7 +3,7 @@
      .form {
           position: absolute;
           width: 600px;
-          border: 3px solid black;
+          /* border: 3px solid black; */
           border-radius: 20px;
           padding: 10px;
           top: 55%;
@@ -25,7 +25,7 @@
      }
 
      .form-group {
-          margin: 10px;
+          margin: 10pxß
      }
 
      @media (max-width: 700px) {
@@ -38,12 +38,40 @@
      }
 
 </style>
-
+<% console.log(user) %> 
+<span><% user.firstName %></span>
 <div class="form">
-     <h1>How are you feeling today?</h1>
+     <h1>How are you feeling today?</h1> <hr>
      <form action="/dashboard/examine" method="post">
-          <div class="form-group">
+          <div class="form-group" required>
+               1. Have you taken a vacination? <br>
+               <div class="form-check">
+                    <input class="form-check-input" type="radio" name="taken" id="yes" value="yes">
+                    <label class="form-check-label" for="taken">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="taken" id="no" value="no">
+                    <label class="form-check-label" for="taken">
+                         No
+                    </label>
+               </div>
           </div>
+          <div class="form-group">
+               <p style="margin-bottom: 5px; margin-top: 10px;">If Yes, which Vaccine have you taken? </p>
+               <input type="text" name="vaccineName" id="vaccineName" placeholder="Name of Vaccine" class="input-group">
+               <p style="margin-bottom: 5px; margin-top: 10px;">How many doses have you taken? </p>
+               <input type="text" name="noDoses" id="noDoses" placeholder="Number of doses taken" class="input-group">
+               <p style="margin-bottom: 5px; margin-top: 10px;">If you have taken 1 dose fill just one Date input else fill both: </p>
+               <input type="date" name="dose1" id="dose1" placeholder="Date of first Dose" class="input-group" style="margin-bottom: 5px">
+               <input type="date" name="dose2" id="dose2" placeholder="Date of second dose" class="input-group"> 
+               <hr>
+          </div>
+
+          <form class="form-group">
+               <button type="submit" id="btn" name="btn" class="btn btn-primary">Submit</button>
+          </form>
      </form>
 </div>
 <%- include("partials/footer") %>
