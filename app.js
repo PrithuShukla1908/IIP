@@ -159,14 +159,23 @@ app.get('/dashboard/examine', function (req, res)
     });
 });
 
-app.post('/dashboard/examine', function (req, res)
-{
+app.post('/dashboard/examine', function (req, res){
+
     console.log(req.body.taken);
     if (req.body.taken === 'no') {
-        User.findOneAndUpdate({ userName: USER.userName }, { set$: { taken: false } }, function (err, u)
+        User.findOneAndUpdate({ userName: USER.userName }, {
+            $set: {
+                taken: false,
+                vaccineName: req.body.vaccineName,
+                noDoses: Number(req.body.noDoses),
+                vaccine1: req.body.dose1,
+                vaccine2: req.body.dose2,
+            }
+        }, function (err, user)
         {
             if (err) res.send(err);
             else {
+                console.log(user);
                 res.redirect('/dashboard');
             }
         });
