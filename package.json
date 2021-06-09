@@ -16,5 +16,8 @@
     "express-session": "^1.17.2",
     "lodash": "^4.17.21",
     "mongoose": "^5.12.9"
+  },
+  "devDependencies": {
+    "fake-data-generator": "^0.4.3"
   }
 }
